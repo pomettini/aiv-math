@@ -56,10 +56,6 @@ vector3_t vector3_normalize(vector3_t v){
     return norm;
 }
 
-typedef struct vector2 {
-    float x;
-    float y;
-} vector2_t;
 void vector4_init(vector4_t *v0 , float x, float y , float z,float w) {
     v0->x = x;
     v0->y = y;
@@ -209,8 +205,7 @@ void test_vector2_magnitude(){
     printf("test_vector2_magnitude passed\n");
 }
 
-void test_vector2_normalize()
-{
+void test_vector2_normalize() {
     vector2_t v;
     v.x = 4;
     v.y = 0;
@@ -231,7 +226,7 @@ void test_vector2_normalize()
     printf("test_vector2_normalize passed\n");
 }
 
-void test_vector3_magnitude(){
+void test_vector3_magnitude() {
     vector3_t v;
 
     v.x = 4;
@@ -244,8 +239,7 @@ void test_vector3_magnitude(){
     printf("test_vector3_magnitude passed\n");
 }
 
-void test_vector3_normalize()
-{
+void test_vector3_normalize() {
     vector3_t v;
     v.x = 0;
     v.y = 4;
@@ -258,6 +252,8 @@ void test_vector3_normalize()
     assert(norm.z == 0);
 
     printf("test_vector3_normalize passed\n");
+}
+
 void test_vector4_add_green() {
     vector4_t v4a;
     vector4_t v4b;
