@@ -303,7 +303,7 @@ void test_vector4_subtract_green() {
     assert(sub.z == 0);
     assert(sub.w == 0);
 
-    printf("test_vector4_sub_green passed\n");
+    printf("test_vector4_subtract_green passed\n");
 }
 
 /* End Tests */
