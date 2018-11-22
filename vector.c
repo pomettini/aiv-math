@@ -1,11 +1,23 @@
 #include <stdio.h>
 #include <assert.h>
 
+typedef struct vector2 {
+    float x;
+    float y;
+} vector2_t;
+
 typedef struct vector3 {
     float x;
     float y;
     float z;
 } vector3_t;
+
+typedef struct vector4 {
+    float x;
+    float y;
+    float z;
+    float w;
+} vector4_t;
 
 void vector3_init(vector3_t *v0, float x, float y, float z) {
     v0->x = x;
@@ -29,13 +41,6 @@ vector3_t vector3_subtract(vector3_t v0, vector3_t v1) {
     return new_vec;
 }
 
-typedef struct vector4 {
-    float x;
-    float y;
-    float z;
-    float w;
-} vector4_t;
-
 void vector4_init(vector4_t *v0 , float x, float y , float z,float w) {
     v0->x = x;
     v0->y = y;
@@ -51,16 +56,15 @@ vector4_t vector4_add(vector4_t v0, vector4_t v1) {
     new_vec.w = v0.w + v1.w;
     return new_vec;
 }
+
 vector4_t vector4_sub(vector4_t v0, vector4_t v1) {
     vector4_t new_vec;
     new_vec.x = v0.x - v1.x;
     new_vec.y = v0.y - v1.y;
     new_vec.z = v0.z - v1.z;
     new_vec.w = v0.w - v1.w;
-typedef struct vector2 {
-    float x;
-    float y;
-} vector2_t;
+    return new_vec;
+}
 
 void vector2_init(vector2_t *v0, float x, float y) {
     v0->x = x;
@@ -212,14 +216,11 @@ void test_vector4_subtract_green() {
 /* End Tests */
 
 int main(int argc, char **argv) {
-    test_vector3_add_green();
-    test_vector3_subtract_green();
-<<<<<<< HEAD
-    test_vector4_add_green();
-    test_vector4_subtract_green();
-=======
     test_vector2_add_green();
     test_vector2_subtract_green();
->>>>>>> 23528c862eb7d91493baa4e6e59f63d3a6da0431
+    test_vector3_add_green();
+    test_vector3_subtract_green();
+    test_vector4_add_green();
+    test_vector4_subtract_green();
     return 0;
 }
