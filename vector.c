@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <assert.h>
+#include <math.h>
 
 // Ciao sono Piera
 
@@ -31,6 +32,20 @@ vector3_t vector3_subtract(vector3_t v0, vector3_t v1) {
     return new_vec;
 }
 
+
+float vector3_magnitude(vector3_t v){
+    return sqrt(v.x * v.x + v.y * v.y + v.z * v.z);
+}
+
+vector3_t vector3_normalize(vector3_t v){
+    vector3_t norm;
+    float mag = vector3_magnitude(v);
+    norm.x = v.x / mag;
+    norm.y = v.y / mag;
+    norm.z = v.z / mag;
+    return norm;
+}
+
 typedef struct vector2 {
     float x;
     float y;
@@ -53,6 +68,19 @@ vector2_t vector2_sub(vector2_t v0, vector2_t v1) {
     new_vec.x = v0.x - v1.x;
     new_vec.y = v0.x - v1.x;
     return new_vec;
+}
+
+
+float vector2_magnitude(vector2_t v){
+    return sqrt(v.x * v.x + v.y * v.y);
+}
+
+vector2_t vector2_normalize(vector2_t v){
+    vector2_t norm;
+    float mag = vector2_magnitude(v);
+    norm.x = v.x / mag;
+    norm.y = v.y / mag;
+    return norm;
 }
 
 /* Start Tests */
@@ -136,6 +164,69 @@ void test_vector3_subtract_green() {
     printf("test_vector3_subtract_green passed\n");
 }
 
+void test_vector2_magnitude(){
+    vector2_t v;
+
+    v.x = 4;
+    v.y = 3;
+
+    float mag = vector2_magnitude(v);
+    assert(mag == 5);
+
+    printf("test_vector2_magnitude passed\n");
+}
+
+void test_vector2_normalize()
+{
+    vector2_t v;
+    v.x = 4;
+    v.y = 0;
+
+    vector2_t norm = vector2_normalize(v);
+
+    assert(norm.x == 1);
+    assert(norm.y == 0);
+
+    v.x = 0;
+    v.y = 4;
+
+    norm = vector2_normalize(v);
+
+    assert(norm.y == 1);
+    assert(norm.x == 0);
+
+    printf("test_vector2_normalize passed\n");
+}
+
+void test_vector3_magnitude(){
+    vector3_t v;
+
+    v.x = 4;
+    v.y = 3;
+    v.z = 0;
+
+    float mag = vector3_magnitude(v);
+    assert(mag == 5);
+
+    printf("test_vector3_magnitude passed\n");
+}
+
+void test_vector3_normalize()
+{
+    vector3_t v;
+    v.x = 0;
+    v.y = 4;
+    v.z = 0;
+
+    vector3_t norm = vector3_normalize(v);
+
+    assert(norm.x == 0);
+    assert(norm.y == 1);
+    assert(norm.z == 0);
+
+    printf("test_vector3_normalize passed\n");
+}
+
 /* End Tests */
 
 int main(int argc, char **argv) {
@@ -143,5 +234,9 @@ int main(int argc, char **argv) {
     test_vector3_subtract_green();
     test_vector2_add_green();
     test_vector2_subtract_green();
+    test_vector2_magnitude();
+    test_vector2_normalize();
+    test_vector3_magnitude();
+    test_vector3_normalize();
     return 0;
 }
