@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <assert.h>
 
-// Ciao sono Piera
-
 typedef struct vector3 {
     float x;
     float y;
@@ -94,7 +92,6 @@ void test_vector2_add_green() {
     assert(sum.y == 2);
 
     printf("test_vector2_add_green passed \n");
-
 }
 
 void test_vector2_subtract_green() {
