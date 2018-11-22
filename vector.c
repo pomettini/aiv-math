@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <assert.h>
 
+// Ciao sono Piera
+
 typedef struct vector3 {
     float x;
     float y;
